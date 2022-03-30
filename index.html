@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- buscando fonte do google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- busca icones e images de um site bem pratico  -->
+    <script src="https://kit.fontawesome.com/a12e9c2fe2.js" crossorigin="anonymous"></script>
+    <!-- vlink o seu arquivo css -->
+    <link rel="stylesheet" href="./styles.css">
+    <title>Calculo De Carta Frete</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <h3>Calculo De Carta Fretes</h3>
+
+        <div>
+            <p><input id="tbPesoIncialKG" placeholder="Peso Inicial (KG)" type="number"></p>
+            <p><input id="tbPesoFinalKG" placeholder="Peso Final (KG)" type="number"></p>
+            <p><input id="tbValorTonelada" placeholder="Valor Tonelada (KG)" type="number"></p>
+        </div>
+
+        <hr>
+        </hr>
+
+        <div>
+            <p><input id="tbValorMercadoria" placeholder="Valor Mercadoria" type="number"></p>
+            <p><input id="tbTolerancia" placeholder="Tolerancia (%)" type="number"></p>
+        </div>
+
+
+
+        <div>
+            <p><input id="tbAdiantamento" placeholder="(-) Adiantamento" type="number"></p>
+            <p><input id="tbPedagio" placeholder="(+) Pedagio" type="number"></p>
+            <p><input id="tbPremio" placeholder="(+) Premios" type="number"></p>
+            <p><input id="tbINSS" placeholder="(-) INSS)" type="number"></p>
+            <p><input id="tbIR" placeholder="(-) IR" type="number"></p>
+            <p><input id="tbSEST_SENAT" placeholder="(-) SETS/SENAT" type="number"></p>
+            <p><input id="tbOutros" placeholder="(-) Outros)" type="number"></p>
+            <p><input id="tbQuebra" placeholder="Quebra"></p>
+            <p><input id="tbTotalCartaFrete" placeholder="Total Carta Frete"></p>
+            <p><input id="tbTotalReceber" placeholder="Total a Receber"> </p>
+        </div>
+
+
+        <button id="btnAdd"> <i class="fa-solid fa-circle-plus"></i> Adicionar</button>
+
+    </div>
+</body>
+<script src="./scripts.js"></script>
+
+</html>
