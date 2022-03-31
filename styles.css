@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+body {
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+}
+
+.container {
+    background-color: #f7f7f7;
+    width: 70vw;
+    margin: 40px auto;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.calculo-frete {
+    float: left;
+}
+
+.calculo-quebra {
+    float: left;
+}
+
+.calculo-quebra label {
+    padding-right: 30px;
+}
+
+.dados-adicionais {
+    float: right;
+}
+
+.dados-adicionais input {}
+
+.dados-gerais {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+fieldset {
+    width: 49%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+
+legend {
+    padding: 5px;
+    font-weight: 700;
+}
+
+label {
+    cursor: pointer;
+}
+
+.dados-gerais label {
+    padding-right: 100px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.botoes {
+    padding: 0;
+    border: none;
+}
+
+.estilo-padrao-botao {
+    cursor: pointer;
+}
+
+#btnLimpar {
+    width: 30%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    background-color: crimson;
+    color: hsl(0, 0%, 100%);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#btnLimpar:hover {
+    opacity: 0.7;
+}
+
+#btnLimpar:active {
+    opacity: 0.4;
+}
+
+#btnCalcular {
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(4, 79, 165);
+    color: hsl(0, 0%, 100%);
+    font-weight: 700;
+    font-size: 20px;
+    float: right;
+}
+
+#btnCalcular:hover {
+    opacity: 0.7;
+}
+
+#btnCalcular:active {
+    opacity: 0.4;
+}
