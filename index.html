@@ -30,6 +30,14 @@
         <hr>
         </hr>
 
+        <p>Cáculo de Quebra</p>
+        <p>
+
+            <input id="radioExcedente" type="radio" name=myradio value="1" checked>Excedente
+            <input id="radioTotal" type="radio" name=myradio value="2">Total
+
+        </p>
+
         <div>
             <p><input id="tbValorMercadoria" placeholder="Valor Mercadoria" type="number"></p>
             <p><input id="tbTolerancia" placeholder="Tolerancia (%)" type="number"></p>
@@ -51,7 +59,13 @@
         </div>
 
 
-        <button id="btnAdd"> <i class="fa-solid fa-circle-plus"></i> Adicionar</button>
+        <button id="btnAdd"> <i class="fa-solid fa-circle-plus"></i> Calcular</button>
+        <input type="button" value="Imprimir" onClick="window.print()">
+        <input type="button" value="Limpar Tela" onClick="document.location.reload(true)">
+
+
+
+
 
     </div>
 </body>
