@@ -1,10 +1,11 @@
 
 // só para já preenhcer os daods facilitar o trampo 
-document.getElementById('pesoInicial').value = 45000
-document.getElementById('pesoFinal').value = 44450
-document.getElementById('valorTonelada').value = 22
-document.getElementById('valorMercadoria').value = 15000
-document.getElementById('tolerancia').value = 1
+
+// document.getElementById('pesoInicial').value = 45000
+// document.getElementById('pesoFinal').value = 44450
+// document.getElementById('valorTonelada').value = 22
+// document.getElementById('valorMercadoria').value = 15000
+// document.getElementById('tolerancia').value = 1
 
 
 let botao = document.getElementById('btnCalcular')
@@ -62,16 +63,58 @@ function calcular() {
 }
 
 
-botao.addEventListener('click', calcular)
+botao.addEventListener('click', valida_form)
 
 
-// function calculoQuebra() {
 
-//     info = document.getElementById('tipoQuebraExcedente').checked
-//     console.log(info + ' teste')
+function valida_form() {
 
+    let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
+    for (let n = 0; n < validacao.length; n++) {
+        
+        // console.log(validacao[n])
+        if (document.getElementById(validacao[n]).value == '') {
+            
+            
+            document.getElementById('quebra').value = ''  
+            document.getElementById('totalBruto').value = ''
+            document.getElementById('totalReceber').value = ''
+
+            document.getElementById(validacao[n]).focus()
+        
+            alerta('erro', false, 'Preencha o campo(' + validacao[n] + ') ...');
+            
+            return false
+        }
+        
+        calcular()
+}
+
+
+
+
+
+function alerta(type, title, mensagem) {
+    Swal.fire({
+        type: type,
+        title: title,
+        text: mensagem,
+        showConfirmButton: true,
+        timer: 4500
+        }); 
+    }
+}
+
+//funcionando porem tem que validar todos os campos um por um 
+// function valida_form() {
+//     let testeErro = document.getElementById('teste')
+    
+//     if (document.getElementById('adiantamento').value == '') {
+//         document.getElementById('adiantamento').focus()
+//         testeErro.innerHTML = ' <--- (-) Adiantamentooo'
+
+//         alerta('erro', false, 'Preencha o campo(s) faltando...');
+
+//         return false
+//     }
 // }
-
-
-// botao.addEventListener('click', calculoQuebra)
-

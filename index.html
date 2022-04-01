@@ -24,36 +24,36 @@
             <!-- Cálculo do Frete -->
             <fieldset class="calculo-frete">
                 <legend>Cálculo de Frete</legend>
-                <input type="number" id="pesoInicial" required>
+                <input type="number" id="pesoInicial" tabindex="1">
                 <label for="pesoInicial">Peso Inicial (Kg)</label>
-                <input type="number" id="pesoFinal" required>
+                <input type="number" id="pesoFinal" tabindex="2">
                 <label for="pesoFinal">Peso Final (Kg)</label>
-                <input type="number" id="valorTonelada" required>
+                <input type="number" id="valorTonelada" tabindex="3">
                 <label for="valorTonelada">Valor por Tonelada</label>
             </fieldset>
 
             <!-- Dados Adicionais -->
             <fieldset class="dados-adicionais">
                 <legend>Dados Adicionais</legend>
-                <input type="number" id="adiantamento">
+                <input type="number" id="adiantamento" tabindex="6">
                 <label for="adiantamento">(-) Adiantamento</label>
                 <br>
-                <input type="number" id="pedagio">
+                <input type="number" id="pedagio" tabindex="7">
                 <label for="pedagio">(+) Pedágio</label>
                 <br>
-                <input type="number" id="premios">
+                <input type="number" id="premios" tabindex="8">
                 <label for="premios">(+) Prêmios</label>
                 <br>
-                <input type="number" id="inss">
+                <input type="number" id="inss" tabindex="9">
                 <label for="inss">(-) INSS</label>
                 <br>
-                <input type="number" id="ir">
+                <input type="number" id="ir" tabindex="10">
                 <label for="ir">(-) IR</label>
                 <br>
-                <input type="number" id="sestSenat">
+                <input type="number" id="sestSenat" tabindex="11">
                 <label for="sestSenat">(-) SEST/SENAT</label>
                 <br>
-                <input type="number" id="outros">
+                <input type="number" id="outros" tabindex="12">
                 <label for="outros">(-) Outros</label>
                 <br>
                 <input id="quebra" disabled="">
@@ -72,28 +72,30 @@
             <!-- Cálculo de Quebra -->
             <fieldset class="calculo-quebra">
                 <legend>Cálculo de Quebra</legend>
-                <input type="radio" id="tipoQuebraExcedente" name="tipo-quebra" value="Excedente" checked />
+                <input type="radio" id="tipoQuebraExcedente" name="tipo-quebra" value="Excedente" checked
+                    tabindex="13">/>
                 <label for="tipoQuebraExcedente">Excedente</label>
                 <input type="radio" id="tipoQuebraTotal" name="tipo-quebra" value="Total" />
                 <label for="tipoQuebraTotal">Total</label>
                 <br>
-                <input type="number" id="valorMercadoria" required>
+                <input type="number" id="valorMercadoria" tabindex="4">
                 <label for="valorMercadoria">Valor Mercadoria</label>
-                <input type="number" id="tolerancia" required>
+                <input type="number" id="tolerancia" tabindex="5">
                 <label for="tolerancia">% Tolerância</label>
             </fieldset>
 
             <fieldset class="botoes">
                 <input type="button" class="estilo-padrao-botao" id="btnLimpar" value="Limpar"
                     onClick="document.location.reload(true)">
-                <input type="button" class="estilo-padrao-botao" id="btnImprimir" value="Imprimir"
+                <input type="button" class="estilo-padrao-botao" id="btnImprimir" value="Imprimir" tabindex="15"
                     onClick="window.print()">
-                <input type="button" class="estilo-padrao-botao" id="btnCalcular" value="Calcular">
+                <input type="button" class="estilo-padrao-botao" id="btnCalcular" value="Calcular" tabindex="14">
 
             </fieldset>
         </form>
     </div>
 </body>
 <script src="./scripts.js"></script>
+<script src="./sweealert.js"></script>
 
 </html>
