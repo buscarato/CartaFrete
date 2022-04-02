@@ -39,12 +39,21 @@ body {
     float: right;
 }
 
-.dados-adicionais input {}
-
 .dados-gerais {
     width: 100%;
-    text-align: center;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#transportadora {
+    width: 100%;
+    padding: 5px;
+    text-transform: capitalize;
+}
+
+#nrCartaFrete {
+    width: 100%;
 }
 
 fieldset {
@@ -62,10 +71,6 @@ legend {
 
 label {
     cursor: pointer;
-}
-
-.dados-gerais label {
-    padding-right: 100px;
 }
 
 input {

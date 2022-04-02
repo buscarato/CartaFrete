@@ -15,10 +15,12 @@
             <!-- Dados Gerais -->
             <fieldset class="dados-gerais">
                 <legend>Dados Gerais</legend>
-                <input type="radio" id="SaldoFrete" name="tipo-frete" value="SaldoFrete" />
-                <label for="SaldoFrete">Saldo Frete</label>
-                <input type="radio" id="Adiantamento" name="tipo-frete" value="Adiantamento" />
-                <label for="Adiantamento">Adiantamento</label>
+               
+                <label for="transportadora">Transportadora:</label>
+                <input type="text" id="transportadora" placeholder="Informe a Razão Social da transportadora">
+                
+                <label for="nrCartaFrete">Número da Carta Frete:</label>
+                <input type="text" id="nrCartaFrete" placeholder="Informe o Número da Carta Frete">
             </fieldset>
 
             <!-- Cálculo do Frete -->
@@ -85,7 +87,7 @@
             </fieldset>
 
             <fieldset class="botoes">
-                <input type="button" class="estilo-padrao-botao" id="btnLimpar" value="Limpar"
+                <input type="reset" class="estilo-padrao-botao" id="btnLimpar" value="Limpar"
                     onClick="document.location.reload(true)">
                 <input type="button" class="estilo-padrao-botao" id="btnImprimir" value="Imprimir" tabindex="15"
                     onClick="window.print()">
