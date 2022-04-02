@@ -7,9 +7,7 @@
 // document.getElementById('valorMercadoria').value = 15000
 // document.getElementById('tolerancia').value = 1
 
-
 let botao = document.getElementById('btnCalcular')
-
 
 function calcular() {
 
@@ -82,7 +80,7 @@ function valida_form() {
 
             document.getElementById(validacao[n]).focus()
         
-            alerta('erro', false, 'Preencha o campo(' + validacao[n] + ') ...');
+            alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
             
             return false
         }

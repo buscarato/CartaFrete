@@ -15,45 +15,47 @@
             <!-- Dados Gerais -->
             <fieldset class="dados-gerais">
                 <legend>Dados Gerais</legend>
-                <input type="radio" id="SaldoFrete" name="tipo-frete" value="SaldoFrete" />
-                <label for="SaldoFrete">Saldo Frete</label>
-                <input type="radio" id="Adiantamento" name="tipo-frete" value="Adiantamento" />
-                <label for="Adiantamento">Adiantamento</label>
+                <label for="transportadora">Transportadora</label>
+                <input type="text" id="transportadora" autofocus tabindex="1" />
+                <label for="nrCartaFrete">Número da Carta Frete</label>
+                <input type="text" id="nrCartaFrete" tabindex="2" />
             </fieldset>
 
             <!-- Cálculo do Frete -->
             <fieldset class="calculo-frete">
                 <legend>Cálculo de Frete</legend>
-                <input type="number" id="pesoInicial" tabindex="1">
+                <input type="number" id="pesoInicial" tabindex="3">
                 <label for="pesoInicial">Peso Inicial (Kg)</label>
-                <input type="number" id="pesoFinal" tabindex="2">
+                <br>
+                <input type="number" id="pesoFinal" tabindex="4">
                 <label for="pesoFinal">Peso Final (Kg)</label>
-                <input type="number" id="valorTonelada" tabindex="3">
+                <br>
+                <input type="number" id="valorTonelada" tabindex="5">
                 <label for="valorTonelada">Valor por Tonelada</label>
             </fieldset>
 
             <!-- Dados Adicionais -->
             <fieldset class="dados-adicionais">
                 <legend>Dados Adicionais</legend>
-                <input type="number" id="adiantamento" tabindex="6">
+                <input type="number" id="adiantamento" tabindex="9">
                 <label for="adiantamento">(-) Adiantamento</label>
                 <br>
-                <input type="number" id="pedagio" tabindex="7">
+                <input type="number" id="pedagio" tabindex="10">
                 <label for="pedagio">(+) Pedágio</label>
                 <br>
-                <input type="number" id="premios" tabindex="8">
+                <input type="number" id="premios" tabindex="11">
                 <label for="premios">(+) Prêmios</label>
                 <br>
-                <input type="number" id="inss" tabindex="9">
+                <input type="number" id="inss" tabindex="12">
                 <label for="inss">(-) INSS</label>
                 <br>
-                <input type="number" id="ir" tabindex="10">
+                <input type="number" id="ir" tabindex="13">
                 <label for="ir">(-) IR</label>
                 <br>
-                <input type="number" id="sestSenat" tabindex="11">
+                <input type="number" id="sestSenat" tabindex="14">
                 <label for="sestSenat">(-) SEST/SENAT</label>
                 <br>
-                <input type="number" id="outros" tabindex="12">
+                <input type="number" id="outros" tabindex="15">
                 <label for="outros">(-) Outros</label>
                 <br>
                 <input id="quebra" disabled="">
@@ -64,7 +66,7 @@
                 <br>
                 <input id="totalReceber" disabled="">
                 <label for="totalFinal">Total a Receber</label>
-                <br>
+                
 
             </fieldset>
 
@@ -72,24 +74,25 @@
             <!-- Cálculo de Quebra -->
             <fieldset class="calculo-quebra">
                 <legend>Cálculo de Quebra</legend>
-                <input type="radio" id="tipoQuebraExcedente" name="tipo-quebra" value="Excedente" checked
-                    tabindex="13">/>
+                <input type="radio" id="tipoQuebraExcedente" name="tipo-quebra" value="Excedente" checked tabindex="6">
                 <label for="tipoQuebraExcedente">Excedente</label>
+                <span class="espaco-radioButton"></span>
                 <input type="radio" id="tipoQuebraTotal" name="tipo-quebra" value="Total" />
                 <label for="tipoQuebraTotal">Total</label>
                 <br>
-                <input type="number" id="valorMercadoria" tabindex="4">
+                <input type="number" id="valorMercadoria" tabindex="7">
                 <label for="valorMercadoria">Valor Mercadoria</label>
-                <input type="number" id="tolerancia" tabindex="5">
+<br>
+                <input type="number" id="tolerancia" tabindex="8">
                 <label for="tolerancia">% Tolerância</label>
             </fieldset>
 
             <fieldset class="botoes">
                 <input type="button" class="estilo-padrao-botao" id="btnLimpar" value="Limpar"
-                    onClick="document.location.reload(true)">
-                <input type="button" class="estilo-padrao-botao" id="btnImprimir" value="Imprimir" tabindex="15"
+                    onClick="document.location.reload(true)" tabindex="-1">
+                <input type="button" class="estilo-padrao-botao" id="btnImprimir" value="Imprimir" tabindex="17"
                     onClick="window.print()">
-                <input type="button" class="estilo-padrao-botao" id="btnCalcular" value="Calcular" tabindex="14">
+                <input type="button" class="estilo-padrao-botao" id="btnCalcular" value="Calcular" tabindex="16">
 
             </fieldset>
         </form>
