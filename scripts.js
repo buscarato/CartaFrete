@@ -1,32 +1,46 @@
 
-// só para já preenhcer os daods facilitar o trampo 
+//informações 
+var Transportadora = ''
+var NrCartaFrete = ''
+var PesoIncialKG = 0
+var PesoFinalKG = 0
+var ValorTonelada = 0
+var ValorMercadoria = 0
+var Tolerancia = 0
+var Adiantamento = 0
+var Pedagio = 0
+var Premio = 0
+var INSS = 0
+var IR = 0
+var SEST_SENAT = 0
+var Outros = 0
+var TotalQuebra = 0
+var TotalBrutoFrete = 0
+var TotalLiquido = 0
 
-// document.getElementById('pesoInicial').value = 45000
-// document.getElementById('pesoFinal').value = 44450
-// document.getElementById('valorTonelada').value = 22
-// document.getElementById('valorMercadoria').value = 15000
-// document.getElementById('tolerancia').value = 1
+
+
 
 let botao = document.getElementById('btnCalcular')
 
+
 function calcular() {
 
-    let PesoIncialKG = Number(document.getElementById('pesoInicial').value)
-    let PesoFinalKG = Number(document.getElementById('pesoFinal').value)
-    let ValorTonelada = Number(document.getElementById('valorTonelada').value)
-    let ValorMercadoria = Number(document.getElementById('valorMercadoria').value)
-    let Tolerancia = Number(document.getElementById('tolerancia').value)
-    let Adiantamento = Number(document.getElementById('adiantamento').value)
-    let Pedagio = Number(document.getElementById('pedagio').value)
-    let Premio = Number(document.getElementById('premios').value)
-    let INSS = Number(document.getElementById('inss').value)
-    let IR = Number(document.getElementById('ir').value)
-    let SEST_SENAT = Number(document.getElementById('sestSenat').value)
-    let Outros = Number(document.getElementById('outros').value)
+    PesoIncialKG = Number(document.getElementById('pesoInicial').value)
+    PesoFinalKG = Number(document.getElementById('pesoFinal').value)
+    ValorTonelada = Number(document.getElementById('valorTonelada').value)
+    ValorMercadoria = Number(document.getElementById('valorMercadoria').value)
+    Tolerancia = Number(document.getElementById('tolerancia').value)
+    Adiantamento = Number(document.getElementById('adiantamento').value)
+    Pedagio = Number(document.getElementById('pedagio').value)
+    Premio = Number(document.getElementById('premios').value)
+    INSS = Number(document.getElementById('inss').value)
+    IR = Number(document.getElementById('ir').value)
+    SEST_SENAT = Number(document.getElementById('sestSenat').value)
+    Outros = Number(document.getElementById('outros').value)
 
     let tipoQuebraExcedente = document.getElementById('tipoQuebraExcedente').checked
-    let TotalQuebra = 0
-    //console.log(tipoQuebraExcedente + '  ---> Verdadei ou falso')
+
 
     //1° Calcula peso perdido na estrada 
     //2° Quanto a transportadora aceita perder % de perca do kg inicial
@@ -35,7 +49,6 @@ function calcular() {
 
 
     if (tipoQuebraExcedente === true) {
-
         TotalQuebra = (ValorMercadoria / PesoIncialKG) * SaldoTolerancia
         //Validação para caso não tenha quebra o sistema não adicione valores negativos
         if (TotalQuebra < 0) {
@@ -50,12 +63,14 @@ function calcular() {
 
 
     //Calculos valores finais 
-    let TotalBrutoFrete = (ValorTonelada * PesoFinalKG) / 1000
-    let TotalLiquido = TotalBrutoFrete - TotalQuebra - Adiantamento + Pedagio + Premio - INSS - IR - SEST_SENAT - Outros
+
+    TotalBrutoFrete = (ValorTonelada * PesoFinalKG) / 1000
+    TotalLiquido = TotalBrutoFrete - TotalQuebra - Adiantamento + Pedagio + Premio - INSS - IR - SEST_SENAT - Outros
 
     document.getElementById('quebra').value = TotalQuebra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })// ok 
     document.getElementById('totalBruto').value = TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
 
 
 }
@@ -64,55 +79,91 @@ function calcular() {
 botao.addEventListener('click', valida_form)
 
 
-
 function valida_form() {
 
     let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
     for (let n = 0; n < validacao.length; n++) {
-        
+
         // console.log(validacao[n])
         if (document.getElementById(validacao[n]).value == '') {
-            
-            
-            document.getElementById('quebra').value = ''  
+
+            document.getElementById('quebra').value = ''
             document.getElementById('totalBruto').value = ''
             document.getElementById('totalReceber').value = ''
-
             document.getElementById(validacao[n]).focus()
-        
+
             alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
-            
             return false
         }
-        
+
         calcular()
-}
+    }
 
 
-
-
-
-function alerta(type, title, mensagem) {
-    Swal.fire({
-        type: type,
-        title: title,
-        text: mensagem,
-        showConfirmButton: true,
-        timer: 4500
-        }); 
+    function alerta(type, title, mensagem) {
+        Swal.fire({
+            type: type,
+            title: title,
+            text: mensagem,
+            showConfirmButton: true,
+            timer: 4500
+        });
     }
 }
 
-//funcionando porem tem que validar todos os campos um por um 
-// function valida_form() {
-//     let testeErro = document.getElementById('teste')
-    
-//     if (document.getElementById('adiantamento').value == '') {
-//         document.getElementById('adiantamento').focus()
-//         testeErro.innerHTML = ' <--- (-) Adiantamentooo'
 
-//         alerta('erro', false, 'Preencha o campo(s) faltando...');
 
-//         return false
-//     }
-// }
+let botaoImprimir = document.getElementById('btnImprimir')
+botaoImprimir.addEventListener('click', impri_form)
+
+
+function impri_form() {
+    valida_form()
+    Transportadora = document.getElementById('transportadora').value
+    NrCartaFrete = document.getElementById('nrCartaFrete').value
+
+    var conteudo = document.getElementById('container').innerHTML,
+        tela_impressao = window.open('about:blank');
+    tela_impressao.document.write("<html><head><title>Impressão Carta Frete</title>");
+    tela_impressao.document.write("</head><body bgcolor=white>");
+    tela_impressao.document.write("<h1 align=center>Impressão Carta Frete</h1>");
+    tela_impressao.document.write("<fieldset>")
+    tela_impressao.document.write("<h2>Dados Gerais</h2>");
+    tela_impressao.document.write("<form action=\"/cgi-local/inscricao.pl\">");
+    tela_impressao.document.write("<ul><b>Transportardora: </b>" + Transportadora + " </ul>");
+    tela_impressao.document.write("<ul><b>Número da Carta Frete: </b>" + NrCartaFrete + " </ul>");
+    tela_impressao.document.write("</fieldset>")
+    tela_impressao.document.write("<p> </p>")
+
+    tela_impressao.document.write("<fieldset>")
+    tela_impressao.document.write("<h2>Calculo de Frete</h2>");
+    tela_impressao.document.write("<ul><li><b>Peso Inicial (Kg):</b> " + PesoIncialKG + "</li>");
+    tela_impressao.document.write("<li><b>Peso Final (Kg):</b> " + PesoFinalKG + "</li>");
+    tela_impressao.document.write("<li><b>Valor por Tonelada:</b> " + ValorTonelada.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li><b>Valor Mercadoria:</b> " + ValorMercadoria.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li> ");
+    tela_impressao.document.write("<li><b>% Tolerância:</b> " + Tolerancia + "</li>");
+    tela_impressao.document.write("<p> </p>")
+
+    tela_impressao.document.write("<li>(-) Adiantamento: " + Adiantamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(+) Pedágio: " + Pedagio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(+) Prêmios: " + Premio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(-) INSS: " + INSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(-) IR: " + IR.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(-) SEST/SENAT: " + SEST_SENAT.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li>(-) Outros: " + Outros.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+
+    tela_impressao.document.write("<p> </p>")
+    tela_impressao.document.write("<li><b>Quebra:</b> " + TotalQuebra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li><b>Total Bruto:</b> " + TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
+    tela_impressao.document.write("<li><b><h2>Total a Receber:</b> " + TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</h2></li>");
+    tela_impressao.document.write("</fieldset>")
+
+    tela_impressao.window.print();
+    tela_impressao.window.close();
+
+
+};
+
+
+
+//document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
