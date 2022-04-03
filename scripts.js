@@ -1,5 +1,5 @@
 
-//informações 
+//#region informações 
 var Transportadora = ''
 var NrCartaFrete = ''
 var PesoIncialKG = 0
@@ -17,15 +17,12 @@ var Outros = 0
 var TotalQuebra = 0
 var TotalBrutoFrete = 0
 var TotalLiquido = 0
+//#endregion
 
-
-
-
-let botao = document.getElementById('btnCalcular')
-
+document.getElementById('btnCalcular').addEventListener('click', valida_form)
+document.getElementById('btnImprimir').addEventListener('click', valida_impressao)
 
 function calcular() {
-
     PesoIncialKG = Number(document.getElementById('pesoInicial').value)
     PesoFinalKG = Number(document.getElementById('pesoFinal').value)
     ValorTonelada = Number(document.getElementById('valorTonelada').value)
@@ -47,7 +44,6 @@ function calcular() {
     // Ex. carga 45.000 KG a trasnportadora aceitar perder 1% = 450 KG na estrada 
     let SaldoTolerancia = (PesoIncialKG - PesoFinalKG) - (PesoIncialKG * Tolerancia / 100)
 
-
     if (tipoQuebraExcedente === true) {
         TotalQuebra = (ValorMercadoria / PesoIncialKG) * SaldoTolerancia
         //Validação para caso não tenha quebra o sistema não adicione valores negativos
@@ -58,9 +54,7 @@ function calcular() {
     else {
 
         TotalQuebra = (PesoIncialKG - PesoFinalKG) * (ValorMercadoria / PesoIncialKG)
-
     }
-
 
     //Calculos valores finais 
 
@@ -70,17 +64,9 @@ function calcular() {
     document.getElementById('quebra').value = TotalQuebra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })// ok 
     document.getElementById('totalBruto').value = TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-
-
-
 }
 
-
-botao.addEventListener('click', valida_form)
-
-
 function valida_form() {
-
     let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
     for (let n = 0; n < validacao.length; n++) {
 
@@ -111,11 +97,37 @@ function valida_form() {
     }
 }
 
+function valida_impressao() {
+    let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
+    for (let n = 0; n < validacao.length; n++) {
+
+        // console.log(validacao[n])
+        if (document.getElementById(validacao[n]).value == '') {
+
+            document.getElementById('quebra').value = ''
+            document.getElementById('totalBruto').value = ''
+            document.getElementById('totalReceber').value = ''
+            document.getElementById(validacao[n]).focus()
+
+            alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
+            return false
+        }
+    }
+
+    calcular();
+    impri_form();
 
 
-let botaoImprimir = document.getElementById('btnImprimir')
-botaoImprimir.addEventListener('click', impri_form)
-
+    function alerta(type, title, mensagem) {
+        Swal.fire({
+            type: type,
+            title: title,
+            text: mensagem,
+            showConfirmButton: true,
+            timer: 4500
+        });
+    }
+}
 
 function impri_form() {
     valida_form()
@@ -130,7 +142,7 @@ function impri_form() {
     tela_impressao.document.write("<fieldset>")
     tela_impressao.document.write("<h2>Dados Gerais</h2>");
     tela_impressao.document.write("<form action=\"/cgi-local/inscricao.pl\">");
-    tela_impressao.document.write("<ul><b>Transportardora: </b>" + Transportadora + " </ul>");
+    tela_impressao.document.write("<ul style='text-transform: capitalize'><b>Transportardora: </b>" + Transportadora + " </ul>");
     tela_impressao.document.write("<ul><b>Número da Carta Frete: </b>" + NrCartaFrete + " </ul>");
     tela_impressao.document.write("</fieldset>")
     tela_impressao.document.write("<p> </p>")

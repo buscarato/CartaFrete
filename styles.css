@@ -74,6 +74,7 @@ input {
 
 #transportadora {
     width: 100%;
+    text-transform: capitalize;
 }
 
 #nrCartaFrete {
