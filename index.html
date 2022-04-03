@@ -24,38 +24,39 @@
             <!-- Cálculo do Frete -->
             <fieldset class="calculo-frete">
                 <legend>Cálculo de Frete</legend>
-                <input type="number" id="pesoInicial" tabindex="3">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pesoInicial" tabindex="3">
                 <label for="pesoInicial">Peso Inicial (Kg)</label>
                 <br>
-                <input type="number" id="pesoFinal" tabindex="4">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pesoFinal" tabindex="4">
                 <label for="pesoFinal">Peso Final (Kg)</label>
                 <br>
-                <input type="number" id="valorTonelada" tabindex="5">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="valorTonelada"
+                    tabindex="5">
                 <label for="valorTonelada">Valor por Tonelada</label>
             </fieldset>
 
             <!-- Dados Adicionais -->
             <fieldset class="dados-adicionais">
                 <legend>Dados Adicionais</legend>
-                <input type="number" id="adiantamento" tabindex="9">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="adiantamento" tabindex="9">
                 <label for="adiantamento">(-) Adiantamento</label>
                 <br>
-                <input type="number" id="pedagio" tabindex="10">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pedagio" tabindex="10">
                 <label for="pedagio">(+) Pedágio</label>
                 <br>
-                <input type="number" id="premios" tabindex="11">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="premios" tabindex="11">
                 <label for="premios">(+) Prêmios</label>
                 <br>
-                <input type="number" id="inss" tabindex="12">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="inss" tabindex="12">
                 <label for="inss">(-) INSS</label>
                 <br>
-                <input type="number" id="ir" tabindex="13">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="ir" tabindex="13">
                 <label for="ir">(-) IR</label>
                 <br>
-                <input type="number" id="sestSenat" tabindex="14">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="sestSenat" tabindex="14">
                 <label for="sestSenat">(-) SEST/SENAT</label>
                 <br>
-                <input type="number" id="outros" tabindex="15">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="outros" tabindex="15">
                 <label for="outros">(-) Outros</label>
                 <br>
                 <input id="quebra" disabled="">
@@ -80,10 +81,11 @@
                 <input type="radio" id="tipoQuebraTotal" name="tipo-quebra" value="Total" />
                 <label for="tipoQuebraTotal">Total</label>
                 <br>
-                <input type="number" id="valorMercadoria" tabindex="7">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="valorMercadoria"
+                    tabindex="7">
                 <label for="valorMercadoria">Valor Mercadoria</label>
                 <br>
-                <input type="number" id="tolerancia" tabindex="8">
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="tolerancia" tabindex="8">
                 <label for="tolerancia">% Tolerância</label>
             </fieldset>
 
@@ -94,10 +96,18 @@
                 <input type="button" class="estilo-padrao-botao" id="btnCalcular" value="Calcular" tabindex="16">
 
 
-                <!-- opção antiga onClick="window.print()" -->
-
             </fieldset>
+
+            <br></br>
+            <br></br>
+            <p style="text-align:center"><a href="https://nubank.com.br/pagar/28qmo/XfneNvAJA4"><img src="./pix.png"
+                        class="media-object  img-responsive img-thumbnail"></a></br>
+
+            <p style="text-align: center;">&copy; 2011-2022 | <strong>Versatil Prime Software Do
+                    Parana Ltda</strong> | <a href="mailto:suporte@versatilsistemas.com.br">Suporte</a></p>
         </form>
+
+
     </div>
 </body>
 <script src="./scripts.js"></script>

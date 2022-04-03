@@ -169,6 +169,7 @@ function impri_form() {
     tela_impressao.document.write("<li><b>Total Bruto:</b> " + TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</li>");
     tela_impressao.document.write("<li><b><h2>Total a Receber:</b> " + TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + "</h2></li>");
     tela_impressao.document.write("</fieldset>")
+    tela_impressao.document.write('<p style="text-align: center;">&copy; 2011-2022 | <strong>Versatil Prime Software Do Parana Ltda</strong> | </p>')
 
     tela_impressao.window.print();
     tela_impressao.window.close();
