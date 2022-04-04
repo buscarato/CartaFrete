@@ -70,18 +70,14 @@ function valida_form() {
     let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
     for (let n = 0; n < validacao.length; n++) {
 
-        // console.log(validacao[n])
         if (document.getElementById(validacao[n]).value == '') {
-
             document.getElementById('quebra').value = ''
             document.getElementById('totalBruto').value = ''
             document.getElementById('totalReceber').value = ''
             document.getElementById(validacao[n]).focus()
-
             alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
             return false
         }
-
         calcular()
     }
 
@@ -100,8 +96,6 @@ function valida_form() {
 function valida_impressao() {
     let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
     for (let n = 0; n < validacao.length; n++) {
-
-        // console.log(validacao[n])
         if (document.getElementById(validacao[n]).value == '') {
 
             document.getElementById('quebra').value = ''
@@ -178,5 +172,11 @@ function impri_form() {
 };
 
 
+function EnterTab(InputId, Evento) {
 
-//document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    if (Evento.keyCode == 13) {
+
+        document.getElementById(InputId).focus();
+
+    }
+}

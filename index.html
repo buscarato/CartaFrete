@@ -16,47 +16,59 @@
             <fieldset class="dados-gerais">
                 <legend>Dados Gerais</legend>
                 <label for="transportadora">Transportadora</label>
-                <input type="text" id="transportadora" autofocus tabindex="1" />
+                <input type="text" id="transportadora" autofocus tabindex="1"
+                    onkeydown="javascript:EnterTab('nrCartaFrete',event)">
                 <label for="nrCartaFrete">Número da Carta Frete</label>
-                <input type="text" id="nrCartaFrete" tabindex="2" />
+                <input type="text" id="nrCartaFrete" tabindex="2" onkeydown="javascript:EnterTab('pesoInicial',event)">
             </fieldset>
 
             <!-- Cálculo do Frete -->
             <fieldset class="calculo-frete">
                 <legend>Cálculo de Frete</legend>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pesoInicial" tabindex="3">
-                <label for="pesoInicial">Peso Inicial (Kg)</label>
-                <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pesoFinal" tabindex="4">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="pesoInicial" tabindex="3"
+                    onkeydown="javascript:EnterTab('pesoFinal',event)">
+
+                <label for="pesoInicial">Peso Inicial (Kg))</label> <br>
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="pesoFinal" tabindex="4"
+                    onkeydown="javascript:EnterTab('valorTonelada',event)">
+
                 <label for="pesoFinal">Peso Final (Kg)</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="valorTonelada"
-                    tabindex="5">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="valorTonelada" tabindex="5"
+                    onkeydown="javascript:EnterTab('valorMercadoria',event)">
+
                 <label for="valorTonelada">Valor por Tonelada</label>
             </fieldset>
 
             <!-- Dados Adicionais -->
             <fieldset class="dados-adicionais">
                 <legend>Dados Adicionais</legend>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="adiantamento" tabindex="9">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="adiantamento" tabindex="9"
+                    onkeydown="javascript:EnterTab('pedagio',event)">
                 <label for="adiantamento">(-) Adiantamento</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="pedagio" tabindex="10">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="pedagio" tabindex="10"
+                    onkeydown="javascript:EnterTab('premios',event)">
                 <label for="pedagio">(+) Pedágio</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="premios" tabindex="11">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="premios" tabindex="11"
+                    onkeydown="javascript:EnterTab('inss',event)">
                 <label for="premios">(+) Prêmios</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="inss" tabindex="12">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="inss" tabindex="12"
+                    onkeydown="javascript:EnterTab('ir',event)">
                 <label for="inss">(-) INSS</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="ir" tabindex="13">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="ir" tabindex="13"
+                    onkeydown="javascript:EnterTab('sestSenat',event)">
                 <label for="ir">(-) IR</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="sestSenat" tabindex="14">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="sestSenat" tabindex="14"
+                    onkeydown="javascript:EnterTab('outros',event)">
                 <label for="sestSenat">(-) SEST/SENAT</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="outros" tabindex="15">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="outros" tabindex="15"
+                    onkeydown="javascript:EnterTab('btnCalcular',event)">
                 <label for="outros">(-) Outros</label>
                 <br>
                 <input id="quebra" disabled="">
@@ -81,11 +93,12 @@
                 <input type="radio" id="tipoQuebraTotal" name="tipo-quebra" value="Total" />
                 <label for="tipoQuebraTotal">Total</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="valorMercadoria"
-                    tabindex="7">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="valorMercadoria" tabindex="7"
+                    onkeydown="javascript:EnterTab('tolerancia',event)">
                 <label for="valorMercadoria">Valor Mercadoria</label>
                 <br>
-                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="tolerancia" tabindex="8">
+                <input type="number" min="0" onkeypress="return event.charCode != 45" id="tolerancia" tabindex="8"
+                    onkeydown="javascript:EnterTab('adiantamento',event)">
                 <label for="tolerancia">% Tolerância</label>
             </fieldset>
 
