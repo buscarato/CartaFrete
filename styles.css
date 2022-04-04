@@ -169,6 +169,12 @@ input {
     opacity: 0.4;
 }
 
-.pix ul {
-    text-align: center;
+
+#btnRelase {
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-weight: 600;
 }

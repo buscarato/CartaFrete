@@ -17,10 +17,12 @@ var Outros = 0
 var TotalQuebra = 0
 var TotalBrutoFrete = 0
 var TotalLiquido = 0
+var MensagemCalculo = true
 //#endregion
 
 document.getElementById('btnCalcular').addEventListener('click', valida_form)
 document.getElementById('btnImprimir').addEventListener('click', valida_impressao)
+document.getElementById('btnRelase').addEventListener('click', release)
 
 function calcular() {
     PesoIncialKG = Number(document.getElementById('pesoInicial').value)
@@ -65,14 +67,37 @@ function calcular() {
     document.getElementById('totalBruto').value = TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
+    if (MensagemCalculo === true) {
+        // aletar antigo de confirmação 
+        // Swal.fire({
+        //     position: 'top-center',
+        //     icon: 'success',
+        //     title: 'Cartar Frete Calculada com Sucesso',
+        //     showConfirmButton: true,
+        //     timer: 3000
+        // })
 
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Cartar Frete Calculada com Sucesso',
-        showConfirmButton: true,
-        timer: 3000
-    })
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: true,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Cartar Frete calculada com sucesso'
+        })
+
+
+
+    }
+
 }
 
 function valida_form() {
@@ -87,12 +112,13 @@ function valida_form() {
             alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
             return false
         }
-        calcular()
     }
 
+    calcular()
 
     function alerta(type, title, mensagem) {
         Swal.fire({
+            icon: 'error',
             type: type,
             title: title,
             text: mensagem,
@@ -105,8 +131,8 @@ function valida_form() {
 function valida_impressao() {
     let validacao = ["pesoInicial", "pesoFinal", "valorTonelada", "valorMercadoria", "tolerancia"];
     for (let n = 0; n < validacao.length; n++) {
-        if (document.getElementById(validacao[n]).value == '') {
 
+        if (document.getElementById(validacao[n]).value == '') {
             document.getElementById('quebra').value = ''
             document.getElementById('totalBruto').value = ''
             document.getElementById('totalReceber').value = ''
@@ -117,12 +143,14 @@ function valida_impressao() {
         }
     }
 
+    MensagemCalculo = false
     calcular();
     impri_form();
-
+    MensagemCalculo = true
 
     function alerta(type, title, mensagem) {
         Swal.fire({
+            icon: 'error',
             type: type,
             title: title,
             text: mensagem,
@@ -188,4 +216,15 @@ function EnterTab(InputId, Evento) {
         document.getElementById(InputId).focus();
 
     }
+}
+
+function release() {
+
+    Swal.fire({
+        imageUrl: 'https://versatilsistemas.com.br/cartafrete/release.png',
+        imageHeight: 600,
+        imageAlt: 'Release Carta Frete'
+    })
+
+
 }
