@@ -72,7 +72,7 @@ function calcular() {
         // Swal.fire({
         //     position: 'top-center',
         //     icon: 'success',
-        //     title: 'Cartar Frete Calculada com Sucesso',
+        //     title: 'Carta Frete Calculada com Sucesso',
         //     showConfirmButton: true,
         //     timer: 3000
         // })
@@ -91,7 +91,7 @@ function calcular() {
 
         Toast.fire({
             icon: 'success',
-            title: 'Cartar Frete calculada com sucesso'
+            title: 'Carta Frete calculada com sucesso'
         })
 
 
@@ -109,22 +109,40 @@ function valida_form() {
             document.getElementById('totalBruto').value = ''
             document.getElementById('totalReceber').value = ''
             document.getElementById(validacao[n]).focus()
-            alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
+            alerta('Preencha o campo (' + validacao[n] + ')');
             return false
         }
     }
 
     calcular()
 
-    function alerta(type, title, mensagem) {
-        Swal.fire({
-            icon: 'error',
-            type: type,
-            title: title,
-            text: mensagem,
+    function alerta(title) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
             showConfirmButton: true,
-            timer: 4500
-        });
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: title
+        })
+
+
+        // Swal.fire({
+        //     icon: 'error',
+        //     type: type,
+        //     title: title,
+        //     text: mensagem,
+        //     showConfirmButton: true,
+        //     timer: 4500
+        // });
     }
 }
 
@@ -137,8 +155,7 @@ function valida_impressao() {
             document.getElementById('totalBruto').value = ''
             document.getElementById('totalReceber').value = ''
             document.getElementById(validacao[n]).focus()
-
-            alerta('erro', false, 'Preencha o campo (' + validacao[n] + ')');
+            alerta('Preencha o campo (' + validacao[n] + ')');
             return false
         }
     }
@@ -148,16 +165,38 @@ function valida_impressao() {
     impri_form();
     MensagemCalculo = true
 
-    function alerta(type, title, mensagem) {
-        Swal.fire({
-            icon: 'error',
-            type: type,
-            title: title,
-            text: mensagem,
+
+    function alerta(title) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
             showConfirmButton: true,
-            timer: 4500
-        });
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: title
+        })
+
+
+        // Swal.fire({
+        //     icon: 'error',
+        //     type: type,
+        //     title: title,
+        //     text: mensagem,
+        //     showConfirmButton: true,
+        //     timer: 4500
+        // });
     }
+
+
+
 }
 
 function impri_form() {
@@ -221,7 +260,7 @@ function EnterTab(InputId, Evento) {
 function release() {
 
     Swal.fire({
-        imageUrl: 'https://versatilsistemas.com.br/cartafrete/release.png',
+        imageUrl: 'https://versatilsistemas.com.br/cartafrete/img/release.png',
         imageHeight: 600,
         imageAlt: 'Release Carta Frete'
     })
