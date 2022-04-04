@@ -64,6 +64,15 @@ function calcular() {
     document.getElementById('quebra').value = TotalQuebra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })// ok 
     document.getElementById('totalBruto').value = TotalBrutoFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+
+    Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Cartar Frete Calculada com Sucesso',
+        showConfirmButton: true,
+        timer: 3000
+    })
 }
 
 function valida_form() {
