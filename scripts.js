@@ -1,4 +1,3 @@
-
 //#region informações 
 var Transportadora = ''
 var NrCartaFrete = ''
@@ -40,10 +39,11 @@ function calcular() {
 
     let tipoQuebraExcedente = document.getElementById('tipoQuebraExcedente').checked
 
-
+    //#region info 
     //1° Calcula peso perdido na estrada 
     //2° Quanto a transportadora aceita perder % de perca do kg inicial
     // Ex. carga 45.000 KG a trasnportadora aceitar perder 1% = 450 KG na estrada 
+    //#endregion
     let SaldoTolerancia = (PesoIncialKG - PesoFinalKG) - (PesoIncialKG * Tolerancia / 100)
 
     if (tipoQuebraExcedente === true) {
@@ -54,12 +54,10 @@ function calcular() {
         }
     }
     else {
-
         TotalQuebra = (PesoIncialKG - PesoFinalKG) * (ValorMercadoria / PesoIncialKG)
     }
 
     //Calculos valores finais 
-
     TotalBrutoFrete = (ValorTonelada * PesoFinalKG) / 1000
     TotalLiquido = TotalBrutoFrete - TotalQuebra - Adiantamento + Pedagio + Premio - INSS - IR - SEST_SENAT - Outros
 
@@ -68,6 +66,7 @@ function calcular() {
     document.getElementById('totalReceber').value = TotalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
     if (MensagemCalculo === true) {
+        //#region aletar modelo antigo  
         // aletar antigo de confirmação 
         // Swal.fire({
         //     position: 'top-center',
@@ -76,6 +75,7 @@ function calcular() {
         //     showConfirmButton: true,
         //     timer: 3000
         // })
+        //#endregion
 
         const Toast = Swal.mixin({
             toast: true,
@@ -93,11 +93,7 @@ function calcular() {
             icon: 'success',
             title: 'Carta Frete calculada com sucesso'
         })
-
-
-
     }
-
 }
 
 function valida_form() {
@@ -134,7 +130,7 @@ function valida_form() {
             title: title
         })
 
-
+        //#region Alerata antigo
         // Swal.fire({
         //     icon: 'error',
         //     type: type,
@@ -143,6 +139,7 @@ function valida_form() {
         //     showConfirmButton: true,
         //     timer: 4500
         // });
+        //#endregion
     }
 }
 
@@ -184,7 +181,7 @@ function valida_impressao() {
             title: title
         })
 
-
+        //#region Alerata antigo
         // Swal.fire({
         //     icon: 'error',
         //     type: type,
@@ -193,10 +190,8 @@ function valida_impressao() {
         //     showConfirmButton: true,
         //     timer: 4500
         // });
+        //#endregion
     }
-
-
-
 }
 
 function impri_form() {
@@ -206,6 +201,8 @@ function impri_form() {
 
     var conteudo = document.getElementById('container').innerHTML,
         tela_impressao = window.open('about:blank');
+
+    //#region Mode Impressao
     tela_impressao.document.write("<html><head><title>Impressão Carta Frete</title>");
     tela_impressao.document.write("</head><body bgcolor=white>");
     tela_impressao.document.write("<h1 align=center>Impressão Carta Frete</h1>");
@@ -243,27 +240,21 @@ function impri_form() {
 
     tela_impressao.window.print();
     tela_impressao.window.close();
-
+    //#endregion
 
 };
 
 
 function EnterTab(InputId, Evento) {
-
     if (Evento.keyCode == 13) {
-
         document.getElementById(InputId).focus();
-
     }
 }
 
 function release() {
-
     Swal.fire({
         imageUrl: 'https://versatilsistemas.com.br/cartafrete/img/release.png',
         imageHeight: 600,
         imageAlt: 'Release Carta Frete'
     })
-
-
 }
